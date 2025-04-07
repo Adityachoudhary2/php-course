@@ -1,5 +1,5 @@
 <?php
-echo ("ok bhaiya");
-echo ("ok bhaiya 2");
+echo "ok bhaiya";
+echo "ok bhaiya 2";
 
 ?>
