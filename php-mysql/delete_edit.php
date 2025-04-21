@@ -25,8 +25,8 @@
     <td>
     <form  method='POST'>
     <button name='delete' value=".$student['id']."'>Delete</button>
-    </form>
-    </td>;
+    </form></td>
+    <td><a href='update.php?id=".$student['id']."'>Edit</a></td>
 
     
 </tr>";
@@ -34,14 +34,12 @@
 }
 echo "</table>";
 if(isset($_POST['delete'])){
-$id=$_POST['delete'];
-$students=$conn->prepare("delete from students where id=:id");
+    $id=$_POST['delete'];
+    $students=$conn->prepare("delete from students where id=:id");
+    if($students->execute([':id'=>$id])){
+        echo "Deleted successfully";
+    }
 }
-if($students->execute([':id'=>$id])){
-    echo "Deleted successfully";
 
-
-
-  }
 
  ?>
