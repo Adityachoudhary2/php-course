@@ -7,11 +7,11 @@
      $getStudent=$conn->prepare("SELECT * FROM students where id=:id");
      $getStudent->execute([':id' => $id]);
      $student=$getStudent->fetchAll();
-     echo $name = $student[0]['name'];
-     echo $number = $student[0]['number'];
-     echo $email = $student[0]['email'];
-     echo $city = $student[0]['city'];
-     echo $course = $student[0]['course'];
+      $name = $student[0]['name'];
+      $number = $student[0]['number'];
+      $email = $student[0]['email'];
+      $city = $student[0]['city'];
+      $course = $student[0]['course'];
         
     
  }
