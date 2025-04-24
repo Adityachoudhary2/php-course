@@ -18,8 +18,6 @@ class Honda {
         echo "Honda";
     }
 }
-
-
  Honda::companyName(); //calling static method
 
 
