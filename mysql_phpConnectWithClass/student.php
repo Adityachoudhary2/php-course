@@ -18,6 +18,7 @@ class Student {
         <th>ID</th>
         <th>Name</th>
         <th>Email</th>
+        <th>Number</th>
         <th>City</th>
         <th>Course</th>
         </tr>";
@@ -27,6 +28,7 @@ class Student {
             <td>" . $student['id'] . "</td>
             <td>" . $student['name'] . "</td>
             <td>" . $student['email'] . "</td>
+            <td>" . $student['number'] . "</td>
             <td>" . $student['city'] . "</td>
             <td>" . $student['course'] . "</td>
             </tr>";
@@ -34,10 +36,45 @@ class Student {
 
         echo "</table>";
     }
+    function insertData(){
+        $sqlQuery = "INSERT INTO students (id ,name, number, email, course, city) VALUES (null, 'AspireCademy', 9528950464,'info@aspirecademy.com', 'Web Development', 'Pune')";
+        $student = $this->DBconn->prepare($sqlQuery);
+        $result=$student->execute();
+        if($result){
+            echo "Data Inserted successfully";
+        }else{
+            echo "Data not Inserted";
+        }
+    }
+    function updateData(){
+        $sqlQuery = "UPDATE students SET name='Cademy', number=9528950464";
+        $student = $this->DBconn->prepare($sqlQuery);
+        $result=$student->execute();
+        if($result){
+            echo " Update Data Inserted successfully";
+        }else{
+            echo " Update Data not Inserted";
+        }
+    }
+    function deleteData(){
+       $id=29;
+
+        $sqlQuery = "DELETE FROM students WHERE id=$id";
+        $student = $this->DBconn->prepare($sqlQuery);
+        $result=$student->execute();
+        if($result){
+            echo " delete successfully";
+        }else{
+            echo " delete Data not Inserted";
+        }
+    }
 }
 
 $student = new Student($conn);
 $student->getData();
+// $student->insertData();
+// $student->updateData();
+$student->deleteData();
 
 
 
