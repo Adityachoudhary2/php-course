@@ -36,8 +36,15 @@ class Student {
 
         echo "</table>";
     }
-    function insertData(){
-        $sqlQuery = "INSERT INTO students (id ,name, number, email, course, city) VALUES (null, 'AspireCademy', 9528950464,'info@aspirecademy.com', 'Web Development', 'Pune')";
+    function insertDataWithRequest($request){
+        // print_r($request);
+        $name = $request['name'];
+        $number = $request['number'];
+        $email = $request['email'];
+        $course = $request['course'];
+        $city = $request['city'];
+
+        $sqlQuery = "INSERT INTO students (id ,name, number, email, course, city) VALUES (null, '$name', '$number','$email', '$course', '$city')";
         $student = $this->DBconn->prepare($sqlQuery);
         $result=$student->execute();
         if($result){
@@ -70,12 +77,15 @@ class Student {
     }
 }
 
+
 $student = new Student($conn);
 $student->getData();
 // $student->insertData();
 // $student->updateData();
-$student->deleteData();
+// $student->deleteData();
 
-
+if(isset($_POST['name'])){
+    $student->insertDataWithRequest($_POST);
+}
 
 ?>
